@@ -4,6 +4,8 @@ const axios = require("axios");
 const app = express();
 app.use(express.json());
 
+// Owner: MR SURAJ
+
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
 
@@ -17,7 +19,7 @@ app.get("/webhook", (req, res) => {
     res.status(200).send(challenge);
   } else {
     res.sendStatus(403);
-  } THE ONWER NAME,(MR SURAJ)
+  }
 });
 
 // Auto reply
@@ -26,9 +28,9 @@ app.post("/webhook", async (req, res) => {
 
   if (body.object === "page") {
     for (const entry of body.entry) {
-      const webhookEvent = entry.messaging[0];
+      const webhookEvent = entry.messaging?.[0];
 
-      if (webhookEvent.sender) {
+      if (webhookEvent?.sender) {
         const senderId = webhookEvent.sender.id;
 
         await axios.post(
@@ -42,6 +44,7 @@ app.post("/webhook", async (req, res) => {
         );
       }
     }
+
     res.sendStatus(200);
   } else {
     res.sendStatus(404);
@@ -49,6 +52,7 @@ app.post("/webhook", async (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
-  console.log(`Server running on ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
