@@ -66,3 +66,22 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MR SURAJ Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>MR SURAJ PANEL</h1>
+    <p>Status: Online</p>
+
+    <form>
+      <input type="text" placeholder="Token">
+      <input type="text" placeholder="UID">
+      <button>Launch</button>
+    </form>
+  </div>
+</body>
+</html>
