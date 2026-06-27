@@ -1,0 +1,9 @@
+app.get("/", (req, res) => {
+  res.send(`
+    <h1>Facebook Bot Panel</h1>
+    <form action="/send" method="post">
+      <input name="message" placeholder="Message">
+      <button type="submit">Send</button>
+    </form>
+  `);
+});
