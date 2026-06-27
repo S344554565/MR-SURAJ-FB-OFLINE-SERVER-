@@ -59,3 +59,10 @@ app.listen(PORT, () => {
 app.get("/", (req, res) => {
   res.send("Facebook Bot is Running ✅");
 });
+const path = require("path");
+
+app.use(express.static("public"));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
